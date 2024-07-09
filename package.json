@@ -1,6 +1,7 @@
 {
   "name": "reactive-pages",
   "version": "0.1.0",
+  "homepage": "https://SergiiVdovareize.github.io/reactive-pages",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,8 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy" : "yarn build",
+    "deploy" : "gh-pages -d build",
+    "postdeploy": "echo 'Reactive deployment complete!'"
   },
   "eslintConfig": {
     "extends": [
@@ -37,6 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://SergiiVdovareize.github.io/reactive-pages"
+  }
 }
