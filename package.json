@@ -1,6 +1,6 @@
 {
   "name": "reactive-pages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://reactive.vdovareize.me",
   "private": true,
   "dependencies": {
@@ -14,6 +14,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "docker:build": "docker build -t reactive-pages .",
+    "docker:run": "docker run -p 3000:3000 reactive-pages",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
