@@ -1,16 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import MainContainer from './components/MainContainer';
+
+import { Center, ChakraProvider, Container } from '@chakra-ui/react'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          rusni pizda 🤩
-        </p>
-      </header>
-    </div>
+    <ChakraProvider>
+      <Container>
+        <Center>
+          <img src='./cloud.png' className="App-logo" alt="logo" />
+        </Center>
+        <MainContainer/>
+      </Container>
+    </ChakraProvider>
   );
 }
 
