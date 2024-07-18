@@ -1,11 +1,13 @@
 import { Container } from "@chakra-ui/react";
-import AmazonFibonacciButton from "./AmazonFibonacciButton"
+import AzureArmstrongButton from "./AzureArmstrongButton";
 import GooglePrimeButton from "./GooglePrimeButton";
+import AmazonFibonacciButton from "./AmazonFibonacciButton";
 
 const MainContainer = () => {
-    return <Container>
-        <AmazonFibonacciButton/>
+    return <Container p={0}>
+        <AzureArmstrongButton/>
         <GooglePrimeButton/>
+        <AmazonFibonacciButton/>
     </Container>
 }
 

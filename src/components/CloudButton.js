@@ -2,9 +2,15 @@ import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, 
 import { useRef, useState } from "react";
 
 const CloudButton = (props) => {
-    const { calculate, label, inputPlaceholder, resultPlaceholder } = props
+    const { 
+        calculate,
+        label,
+        inputPlaceholder,
+        resultPlaceholder = 'Enter index'
+    } = props
 
     const [responseTime, setResponseTime] = useState(null)
+    const [calculationTime, setCalculationTime] = useState(null)
     const [index, setIndex] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null)
     const [result, setResult] = useState(null)
@@ -26,6 +32,7 @@ const CloudButton = (props) => {
             setErrorMessage(null);
             setIndex(value)
             setResult(result.data)
+            setCalculationTime(result.calculationTime)
         } else {
             setErrorMessage(result.message || 'unknown issue');
             setResult(null)
@@ -37,7 +44,7 @@ const CloudButton = (props) => {
         return resultPlaceholder.replace('_index_', index)
     }
 
-    return <Box borderWidth={1} borderRadius={5} p={4} m={5}>
+    return <Box borderWidth={1} borderRadius={5} p={4} mb={4}>
         <FormControl isInvalid={!!errorMessage} onSubmit={handleClick}>
             <FormLabel>{ label }:</FormLabel>
     
@@ -67,6 +74,7 @@ const CloudButton = (props) => {
             { responseTime && <FormHelperText>
                 <Text as='i'>
                     {`response time is ${responseTime}ms`}
+                    { !isNaN(calculationTime) && `, calculation time is ${calculationTime}ms`}
                 </Text>
             </FormHelperText>}
         </FormControl>

@@ -19,7 +19,11 @@ const CloudService = {
 
     async getPrimeNumber(index) {
         return await getResult(`${Constants.PRIME_URL}?index=${index}`)
-    }
+    },
+
+    async getArmstrongNumber(index) {
+        return await getResult(`${Constants.ARMSTRONG_URL}?index=${index}`)
+    },
 }
 
 export default CloudService
