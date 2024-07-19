@@ -14,7 +14,7 @@ const getResult = async (url) => {
 
 const CloudService = {
     async getFibonacciNumber(index) {
-        return await getResult(`${Constants.FIBONACCI_URL}?index=${index}`)
+        return await getResult(`${Constants.FIBONACCI_URL}/${index}`)
     },
 
     async getPrimeNumber(index) {

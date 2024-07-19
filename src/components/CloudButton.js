@@ -5,8 +5,8 @@ const CloudButton = (props) => {
     const { 
         calculate,
         label,
-        inputPlaceholder,
-        resultPlaceholder = 'Enter index'
+        inputPlaceholder = 'Enter index',
+        resultPlaceholder,
     } = props
 
     const [responseTime, setResponseTime] = useState(null)
