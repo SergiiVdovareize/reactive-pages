@@ -2,7 +2,7 @@ import Constants from "./Constants";
 
 const getResult = async (url) => {
     try {
-        const data = await fetch(url)
+        const data = await fetch(url, { signal: AbortSignal.timeout(60000) })
         return await data.json()
     } catch (error) {
         return {
