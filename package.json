@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "postdeploy": "echo 'Reactive deployment complete!'"
+    "postdeploy": "echo 'Reactive deployment initialized'"
   },
   "eslintConfig": {
     "extends": [
