@@ -46,7 +46,9 @@ const CloudButton = (props) => {
 
     return <Box borderWidth={1} borderRadius={5} p={4} mb={4}>
         <FormControl isInvalid={!!errorMessage} onSubmit={handleClick}>
-            <FormLabel>{ label }:</FormLabel>
+            <FormLabel>
+                { label }:
+            </FormLabel>
     
             <InputGroup size='md'>
                 <Input
