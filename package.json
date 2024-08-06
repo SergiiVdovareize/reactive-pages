@@ -15,8 +15,8 @@
   },
   "scripts": {
     "docker:build": "docker build -t reactive-pages .",
-    "docker:run": "docker run -p 3000:3000 reactive-pages",
-    "start": "react-scripts start",
+    "docker:run": "docker run -p 3003:3003 reactive-pages",
+    "start": "PORT=3003 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
