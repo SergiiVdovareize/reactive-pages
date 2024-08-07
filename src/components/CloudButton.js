@@ -76,7 +76,7 @@ const CloudButton = (props) => {
             { responseTime && <FormHelperText>
                 <Text as='i'>
                     {`response time is ${responseTime}ms`}
-                    { !isNaN(calculationTime) && `, calculation time is ${calculationTime}ms`}
+                    { (!isNaN(calculationTime) && calculationTime !== null) && `, calculation time is ${calculationTime}ms`}
                 </Text>
             </FormHelperText>}
         </FormControl>

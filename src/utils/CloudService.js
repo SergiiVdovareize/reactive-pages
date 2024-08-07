@@ -14,7 +14,7 @@ const getResult = async (url) => {
 
         return {
             success: false,
-            message: 'unknown issue',
+            message: json.message || 'unknown issue',
         }
     } catch (error) {
         return {
