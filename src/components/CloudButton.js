@@ -17,7 +17,7 @@ const CloudButton = (props) => {
     const [isCalculating, setIsCalculating] = useState(false)
     const indexRef = useRef(null)
 
-    const handleClick = async () => {
+    const submitIndex = async () => {
         if (isCalculating) {
             return;
         }
@@ -40,12 +40,18 @@ const CloudButton = (props) => {
         setIsCalculating(false);
     }
 
+    const handleKeyDown = (event) => {
+        if (event.keyCode === 13) {
+            submitIndex();
+        }
+    }
+
     const composeResult = () => {
         return resultPlaceholder.replace('_index_', index)
     }
 
     return <Box borderWidth={1} borderRadius={5} p={4} mb={4}>
-        <FormControl isInvalid={!!errorMessage} onSubmit={handleClick}>
+        <FormControl isInvalid={!!errorMessage}>
             <FormLabel>
                 { label }:
             </FormLabel>
@@ -56,10 +62,12 @@ const CloudButton = (props) => {
                     pr='4.5rem'
                     type='number'
                     placeholder={inputPlaceholder}
+                    onKeyDown={handleKeyDown}
+                    disabled={isCalculating}
                 />
     
                 <InputRightElement width='4.5rem'>
-                    <Button isLoading={isCalculating} size='sm' onClick={handleClick}>Calc</Button>
+                    <Button isLoading={isCalculating} size='sm' onClick={submitIndex}>Calc</Button>
                 </InputRightElement>    
             </InputGroup>
 
