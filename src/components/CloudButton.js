@@ -35,9 +35,18 @@ const CloudButton = (props) => {
             setCalculationTime(result.calculationTime)
         } else {
             setErrorMessage(result.message || 'unknown issue');
-            setResult(null)
+            setResult(null);
         }
         setIsCalculating(false);
+        restoreFocus();
+    }
+
+    const restoreFocus = () => {
+        if (document.activeElement.dataset?.index !== 'true') {
+            setTimeout(() => {
+                indexRef.current.focus();
+            }, 100);
+        }
     }
 
     const handleKeyDown = (event) => {
@@ -61,6 +70,7 @@ const CloudButton = (props) => {
                     ref={indexRef}
                     pr='4.5rem'
                     type='number'
+                    data-index={true}
                     placeholder={inputPlaceholder}
                     onKeyDown={handleKeyDown}
                     disabled={isCalculating}
