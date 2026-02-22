@@ -21,7 +21,7 @@ A React web app that benchmarks **serverless number computations** across three 
 
 The backend can respond in two modes:
 - **`sync`** — result returned immediately in the response body
-- **`async`** — backend returns a job ID; the frontend polls `/async/result/:id` until the result is ready (used for heavier computations)
+- **`async`** — backend returns a job ID; the frontend polls the server until the result is ready (used for heavier computations)
 
 ---
 
