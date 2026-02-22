@@ -6,7 +6,7 @@ import MainContainer from './components/MainContainer';
 function App() {
   return (
     <ChakraProvider value={defaultSystem}>
-      <Container>
+      <Container maxW="800px">
         <Center>
           <img src='./cloud.png' className="App-logo" alt="logo" />
         </Center>

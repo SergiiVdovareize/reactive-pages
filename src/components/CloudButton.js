@@ -69,13 +69,21 @@ const CloudButton = (props) => {
                 <Input
                     ref={indexRef}
                     type='number'
+                    flex="1"
                     data-index={true}
                     placeholder={inputPlaceholder}
                     onKeyDown={handleKeyDown}
                     disabled={isCalculating}
                 />
-                <Button loading={isCalculating} size='sm' onClick={submitIndex}>Calc</Button>
+                <Button loading={isCalculating} bg="bg.subtle" variant="outline" onClick={submitIndex}>Calc</Button>
             </Group>
+
+            {/* <Group attached w="full" maxW="sm">
+                <Input flex="1" placeholder="Enter your email" />
+                <Button bg="bg.subtle" variant="outline">
+                    Submit
+                </Button>
+            </Group> */}
 
             {errorMessage &&
                 <Field.ErrorText>{errorMessage}</Field.ErrorText>
