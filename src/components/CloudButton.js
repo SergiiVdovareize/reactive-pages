@@ -1,8 +1,8 @@
-import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
+import { Box, Button, Field, Group, Input, Text } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
 const CloudButton = (props) => {
-    const { 
+    const {
         calculate,
         label,
         inputPlaceholder = 'Enter index',
@@ -25,16 +25,16 @@ const CloudButton = (props) => {
         const startTime = Date.now();
         setIsCalculating(true);
         const value = indexRef.current.value
-        const result = await calculate(value);
+        const res = await calculate(value);
         setResponseTime(Date.now() - startTime);
-        
-        if (result.success && result.data) {
+
+        if (res.success && res.data) {
             setErrorMessage(null);
             setIndex(value)
-            setResult(result.data)
-            setCalculationTime(result.calculationTime)
+            setResult(res.data)
+            setCalculationTime(res.calculationTime)
         } else {
-            setErrorMessage(result.message || 'unknown issue');
+            setErrorMessage(res.message || 'unknown issue');
             setResult(null);
         }
         setIsCalculating(false);
@@ -60,44 +60,40 @@ const CloudButton = (props) => {
     }
 
     return <Box borderWidth={1} borderRadius={5} p={4} mb={4}>
-        <FormControl isInvalid={!!errorMessage}>
-            <FormLabel>
-                { label }:
-            </FormLabel>
-    
-            <InputGroup size='md'>
+        <Field.Root invalid={!!errorMessage}>
+            <Field.Label>
+                {label}:
+            </Field.Label>
+
+            <Group attached w="full">
                 <Input
                     ref={indexRef}
-                    pr='4.5rem'
                     type='number'
                     data-index={true}
                     placeholder={inputPlaceholder}
                     onKeyDown={handleKeyDown}
                     disabled={isCalculating}
                 />
-    
-                <InputRightElement width='4.5rem'>
-                    <Button isLoading={isCalculating} size='sm' onClick={submitIndex}>Calc</Button>
-                </InputRightElement>    
-            </InputGroup>
+                <Button loading={isCalculating} size='sm' onClick={submitIndex}>Calc</Button>
+            </Group>
 
-            { errorMessage && 
-                <FormErrorMessage>{ errorMessage }</FormErrorMessage>
+            {errorMessage &&
+                <Field.ErrorText>{errorMessage}</Field.ErrorText>
             }
 
-            { result && <FormHelperText>
-                <Text color='green'>{ `${composeResult()} ` }
-                    <Text as='b'>{ result }</Text>
+            {result && <Field.HelperText>
+                <Text color='green'>{`${composeResult()} `}
+                    <Text as='b'>{result}</Text>
                 </Text>
-            </FormHelperText>}
+            </Field.HelperText>}
 
-            { responseTime && <FormHelperText>
+            {responseTime && <Field.HelperText>
                 <Text as='i'>
                     {`response time is ${responseTime}ms`}
-                    { (!isNaN(calculationTime) && calculationTime !== null) && `, calculation time is ${calculationTime}ms`}
+                    {(!isNaN(calculationTime) && calculationTime !== null) && `, calculation time is ${calculationTime}ms`}
                 </Text>
-            </FormHelperText>}
-        </FormControl>
+            </Field.HelperText>}
+        </Field.Root>
     </Box>
 }
 

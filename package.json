@@ -4,14 +4,14 @@
   "homepage": "https://reactive.vdovareize.me",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "gh-pages": "^6.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "gh-pages": "^6.3.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^5.1.0"
   },
   "scripts": {
     "docker:build": "docker build -t reactive-pages .",
@@ -43,9 +43,9 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "framer-motion": "^11.3.5"
+    "@chakra-ui/react": "^3.33.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "framer-motion": "^12.34.3"
   }
 }
