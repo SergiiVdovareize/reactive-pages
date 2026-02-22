@@ -27,7 +27,7 @@ The backend can respond in two modes:
 
 ## Tech Stack
 
-- **React 18** + **Chakra UI** — frontend framework and component system
-- **Framer Motion** — animations
+- **React 19** + **Chakra UI 3** — frontend framework and component system
+- **Framer Motion 12** — animations
 - **AWS Lambda / Google Cloud Functions / Azure Functions** — serverless compute (backend: [api-me](https://github.com/SergiiVdovareize/api-me))
 
