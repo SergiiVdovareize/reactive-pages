@@ -43,9 +43,12 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/react": "^3.33.0",
+    "@ark-ui/react": "^5.34.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@chakra-ui/react": "^3.34.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "framer-motion": "^12.34.3"
+    "@testing-library/dom": "^10.4.1",
+    "framer-motion": "^12.38.0"
   }
 }
