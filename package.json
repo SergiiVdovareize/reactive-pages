@@ -50,5 +50,13 @@
     "@emotion/styled": "^11.14.1",
     "@testing-library/dom": "^10.4.1",
     "framer-motion": "^12.38.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@ark-ui/react/(.*)$": "<rootDir>/node_modules/@ark-ui/react/dist/components/$1/index.cjs"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@chakra-ui|@ark-ui|@zag-js|proxy-compare)/)"
+    ]
   }
 }
