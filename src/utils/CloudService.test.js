@@ -81,5 +81,83 @@ describe('CloudService', () => {
             expect(fetch).toHaveBeenNthCalledWith(3, `${Constants.RESULT_URL}/token_123`);
             expect(result).toEqual(mockPoll2Response);
         });
+
+        test('handles async polling failure with default error message', async () => {
+            const mockStartResponse = {
+                type: 'async',
+                data: 'token_failed'
+            };
+            const mockPollFailed = {
+                success: false,
+                status: 3
+            };
+
+            fetch
+                .mockResolvedValueOnce({ json: () => Promise.resolve(mockStartResponse) })
+                .mockResolvedValueOnce({ json: () => Promise.resolve(mockPollFailed) });
+
+            const result = await CloudService.getFibonacciNumber(10);
+            expect(result).toEqual({
+                success: false,
+                message: 'unknown issue'
+            });
+        });
+
+        test('handles network error during async polling', async () => {
+            const mockStartResponse = {
+                type: 'async',
+                data: 'token_network_err'
+            };
+
+            fetch
+                .mockResolvedValueOnce({ json: () => Promise.resolve(mockStartResponse) })
+                .mockRejectedValueOnce(new Error('Poll timeout'));
+
+            const result = await CloudService.getFibonacciNumber(10);
+            expect(result).toEqual({
+                success: false,
+                message: 'Poll timeout'
+            });
+        });
+
+        test('handles unknown response type without message with default error', async () => {
+            fetch.mockResolvedValueOnce({
+                json: () => Promise.resolve({})
+            });
+
+            const result = await CloudService.getFibonacciNumber(1);
+            expect(result).toEqual({
+                success: false,
+                message: 'unknown issue'
+            });
+        });
+
+        test('getPrimeNumber calls correct PRIME_URL', async () => {
+            const mockResponse = {
+                type: 'sync',
+                data: { success: true, result: 7 }
+            };
+            fetch.mockResolvedValueOnce({
+                json: () => Promise.resolve(mockResponse)
+            });
+
+            const result = await CloudService.getPrimeNumber(4);
+            expect(fetch).toHaveBeenCalledWith(`${Constants.PRIME_URL}/4`);
+            expect(result).toEqual(mockResponse.data);
+        });
+
+        test('getArmstrongNumber calls correct ARMSTRONG_URL', async () => {
+            const mockResponse = {
+                type: 'sync',
+                data: { success: true, result: 153 }
+            };
+            fetch.mockResolvedValueOnce({
+                json: () => Promise.resolve(mockResponse)
+            });
+
+            const result = await CloudService.getArmstrongNumber(10);
+            expect(fetch).toHaveBeenCalledWith(`${Constants.ARMSTRONG_URL}/10`);
+            expect(result).toEqual(mockResponse.data);
+        });
     });
 });
